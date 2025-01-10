@@ -16,7 +16,25 @@ import (
 )
 
 func regredirDias() []string {
-	dataAtual := time.Now()
+	var dataAtual time.Time
+	var opt uint8
+	
+	fmt.Println(`[1] Informar data manual`)
+	fmt.Println(`[Enter] Pegar data atual`)
+	fmt.Print(`Escolha uma opção: `)
+	fmt.Scan(&opt)
+
+	switch opt {
+	case 1:
+		var input string
+
+		fmt.Println("Digite a data (dd/mm/yyyy): ")
+		fmt.Scan(&input)
+		
+		dataAtual, _ = time.Parse("02/01/2006", input)
+	default:
+		dataAtual = time.Now()
+	}
 	var dias []string
 
 	for i := 0; i <= 29; i++ {
